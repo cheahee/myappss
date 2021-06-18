@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>addressList.html</title>
+    <style>
+        #wrap { width:450px; margin:auto }
+        #table { border-collapse: collapse; width:100% }
+        #th,td { padding:8px; text-align:left;
+        border-bottom: 1px solid #ddd;
+        }
+        tr:hover { background:#f5f5f5; cursor:pointer }
+    </style>
+</head>
+
+<body>
+<h1> Address Write 예제 </h1>
+<form method="post" action="insert">
+    {% csrf_token%}
+  <table>
+    <tr><td>이름</td><td><input type="text" name="name"></td></tr>
+    <tr><td>전화번호</td><td><input type="text" name="tel"></td></tr>
+    <tr><td>이메일</td><td><input type="email" name="email"></td></tr>
+    <tr><td>주소</td><td><input type="text" name="address"></td></tr>
+    <tr><input type="submit"></tr>
+  </table>
+</form>
+</body>
+</html>

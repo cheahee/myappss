@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>addressList.html</title>
+
+    <style>
+        #wrap { width:450px; margin:auto }
+
+        #table { border-collapse: collapse; width:100% }
+        #th,td { padding:8px; text-align:left;
+        border-bottom: 1px solid #ddd;
+        }
+        tr:hover { background:#f5f5f5; cursor:pointer }
+    </style>
+</head>
+
+<body>
+<div><h3> Address List </h3>
+<!--<p> 여기는 주소록 리스트 : {{msg}}</p>-->
+<p> 여기는 주소록 리스트 : {{address_count}}</p>
+<!--<p> {{items}}</p>-->
+    <table>
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>전화번호</th>
+            <th>이메일</th>
+            <th>주소</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <th colspan="5">
+                <input type="button" value="등록" onclick="location='write'">
+            </th>
+        </tr>
+        </tfoot>
+        <tbody>
+        <!--jstl 사용-->
+        {% for e in items %}
+            <tr>
+                <td>{{e.idx}}</td>
+                <td>
+                    <a href="detail?idx={{e.idx}}">{{e.name}}</a>
+                </td>
+                <td>{{e.tel}}</td>
+                <td>{{e.email}}</td>
+                <td>{{e.address}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

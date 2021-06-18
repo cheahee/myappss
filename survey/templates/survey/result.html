@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>result.html</title>
+</head>
+<body>
+<div id="wrap">
+    <h1>투표 결과</h1>
+    <table id="datatable">
+        <thead>
+            <tr align="center">
+                <th>문항</th>
+                <th>응답수</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row, ans in surveyList %}
+            <tr align="center">
+                <!--=================================================================================-->
+                <input type="hidden" class="ans" name="ans" value="{{ans}}">
+                <input type="hidden" class="sum_num" name="sum_num" value="{{row.sum_num}}">
+                <!--=================================================================================-->
+                <td>{{ans}}</td>
+                <td>{{row.sum_num}}</td>
+                <!--sql에 있는 테이블 row 가져오기-->
+            </tr>
+            {%endfor%}
+        </tbody>
+        <tr>
+        	<td>{{surveyList}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="button" value="투표하기" onclick="location='/survey'">
+            </td>
+        </tr>
+    </table>
+</div>
+<!--================================================================-->
+<!--파이차트 들어갈 곳-->
+<div id="chart_donut"></div>
+
+<!--파이차트 연결 주소-->
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<!--파이차트 연결 주소 끝-->
+
+<!-- 파이차트 연결하기-->
+<script>
+  $(function(){
+
+        var chartData=[
+            ['원숭이',3],
+            ['양',3],
+            ['소',1],
+            ['말',1],
+            ['호랑이',10],
+        ];
+
+        var chart = c3.generate({
+        bindto:'#chart_donut',
+        data: {
+        columns: chartData,
+        type : 'pie',
+    }
+});
+    });
+
+</script>
+<!--================================================================-->
+</body>
+</html>
